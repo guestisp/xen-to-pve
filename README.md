@@ -16,7 +16,9 @@ from the filename.
 
 Then, on PVE node:
 
-# qm importdisk 100 disk1.raw local-zfs
+```
+qm importdisk 100 disk1.raw local-zfs
+```
 
 where `100` is the VM id, `disks1.raw` is the extracted (and renamed) disk
 image and `local-zfs` is the local PVE storage name
