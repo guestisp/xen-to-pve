@@ -13,7 +13,7 @@ saving time.
 To use:
 - create a new VM on PVE
 - remove all attached disks
-- run migrate.sh vm-uuid vm-id host port user pass
+- run migrate.sh xs-vm-uuid pve-vm-id host port user pass
 
 Requirements: 
   - XCP-XE: http://mirror.yy.duowan.com:63782/ubuntu/pool/universe/x/xen-api/xcp-xe_1.3.2-5ubuntu1_amd64.deb
