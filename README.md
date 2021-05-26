@@ -1,28 +1,20 @@
 # xen-to-pve
 XenServer to Proxmox direct export script.
+Version 2
 
 PRs are welcome.
 
-Basically, it export a VM from XS host and, while transferring it,
-automatically extract the tarball and convert to a raw image.
+Basically, it directly export a VM from XS host to a PVE ZFS pool
 
 In other words, the single export phase is the only phase needed,
-extraction and convertion are done on the fly during the exprort,
+no need for tarball extraction, merging and importing with "qm",
 saving time.
 
-After running the script, you'll end with 1 file for any exported disk.
-Due to a qemu bug, each disk must be renamed to remove the ":" chars
-from the filename.
+To use:
+- create a new VM on PVE
+- remove all attached disks
+- run migrate.sh vm-uuid vm-id host port user pass
 
-Then, on PVE node:
-
-```
-qm importdisk 100 disk1.raw local-zfs
-```
-
-where `100` is the VM id, `disks1.raw` is the extracted (and renamed) disk
-image and `local-zfs` is the local PVE storage name
-
-and you are ready.
-
-Just create a new VM (to get the VM-ID) without any attached disks. 
+Requirements: 
+  - XCP-XE: http://mirror.yy.duowan.com:63782/ubuntu/pool/universe/x/xen-api/xcp-xe_1.3.2-5ubuntu1_amd64.deb
+  - stunnel
